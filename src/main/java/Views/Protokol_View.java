@@ -1,0 +1,153 @@
+package Views;
+
+import org.jdesktop.swingx.JXDatePicker;
+
+import javax.swing.*;
+import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+/**
+ * Created by BUHARIN on 04.01.2017.
+ */
+public class Protokol_View extends JPanel {
+    public JTextField jTextFieldNumber;
+    public JComboBox jComboBox = new JComboBox();
+    JLabel jLabelNumber;
+    JLabel jLabelDate;
+    JLabel jLabelDateCriminal;
+    JLabel jLabelSotrudnik;
+    JLabel jLabelHasPunkt;
+    public JXDatePicker picker;
+    public JXDatePicker pickerCriminal;
+    public JXDatePicker pickerCopy_Date;
+    public JXDatePicker pickerMail_Date;
+    JLabel jLabelSubject;
+    JLabel jLabelRayon;
+    JLabel jLabelStreet;
+    JLabel jLabelHouse;
+    JLabel jLabelBreach;
+    JLabel jLabelItem_Nomer;
+    JLabel jLabelItem_Part;
+    JLabel jLabelDocuments;
+    JLabel jLabelNotice;
+    public JCheckBox jCheckBoxCourt;
+    public JCheckBox jCheckBoxCopy_Date;
+    public JCheckBox jCheckBoxMail_Date;
+    public JComboBox jComboBoxSubject;
+    public JTextField jTextFieldStreet;
+    public JTextField jTextFieldNasPunkt;
+    public JTextField jTextFieldRayon;
+    public JTextField jTextFieldHouse;
+    public JTextField jTextFieldBreach;
+    public JTextField jTextFieldItem_Nomer;
+    public JTextField jTextFieldItem_Part;
+    public JTextField jTextFieldDocuments;
+    public JTextField jTextFieldNotice;
+
+    public Protokol_View() {
+        this.setLayout(new GridLayout(15, 1,0,0));
+        JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel jPanel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel jPanel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel jPanel3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel jPanel4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel jPanel5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel jPanel6 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel jPanel7 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        jTextFieldNumber = new JTextField();
+        jTextFieldNasPunkt = new JTextField();
+        jTextFieldRayon = new JTextField();
+        jTextFieldStreet = new JTextField();
+        jTextFieldHouse = new JTextField();
+        jTextFieldBreach = new JTextField();
+        jTextFieldItem_Nomer = new JTextField();
+        jTextFieldItem_Part = new JTextField();
+        jTextFieldDocuments = new JTextField();
+        jTextFieldNotice = new JTextField();
+        jTextFieldNumber.setPreferredSize(new Dimension(100,20));
+        jTextFieldNasPunkt.setPreferredSize(new Dimension(100,20));
+        jTextFieldRayon.setPreferredSize(new Dimension(100,20));
+        jTextFieldStreet.setPreferredSize(new Dimension(150,20));
+        jTextFieldHouse.setPreferredSize(new Dimension(100,20));
+        jTextFieldBreach.setPreferredSize(new Dimension(600,20));
+        jTextFieldItem_Nomer.setPreferredSize(new Dimension(70,20));
+        jTextFieldItem_Part.setPreferredSize(new Dimension(70,20));
+        jTextFieldDocuments.setPreferredSize(new Dimension(600,20));
+        jTextFieldNotice.setPreferredSize(new Dimension(600,20));
+
+        picker = new JXDatePicker();
+        pickerCopy_Date = new JXDatePicker();
+        pickerMail_Date = new JXDatePicker();
+        pickerCriminal = new JXDatePicker();
+        pickerCriminal.setDate(Calendar.getInstance().getTime());
+        picker.setFormats(new SimpleDateFormat("dd.MM.yyyy"));
+        pickerCopy_Date.setFormats(new SimpleDateFormat("dd.MM.yyyy"));
+        pickerMail_Date.setFormats(new SimpleDateFormat("dd.MM.yyyy"));
+        pickerCriminal.setFormats(new SimpleDateFormat("dd.MM.yyyy"));
+        jLabelNumber = new JLabel("Номер");
+        jLabelDate = new JLabel("Дата");
+        jLabelDateCriminal = new JLabel("Дата нарушения");
+        jLabelSotrudnik = new JLabel("Сотрудник");
+        jLabelHasPunkt = new JLabel("Нас. Пункт");
+        jLabelStreet = new JLabel("Улица");
+        jLabelHouse = new JLabel("Дом");
+        jLabelBreach = new JLabel("Нарушение");
+        jLabelItem_Nomer = new JLabel("Номер Статьи");
+        jLabelItem_Part = new JLabel("Часть Статьи");
+        jLabelDocuments = new JLabel("Документы");
+        jLabelSubject = new JLabel("Субъект");
+        jLabelRayon = new JLabel("Район");
+        jLabelNotice = new JLabel("Примечание");
+        jCheckBoxCourt = new JCheckBox("Направлено в суд");
+        jCheckBoxCopy_Date = new JCheckBox("Копию получил лично");
+        jCheckBoxMail_Date = new JCheckBox("Копию отправили по почте");
+        jComboBox.setEditable(false);
+        jTextFieldNumber.setEditable(false);
+        jComboBoxSubject = new JComboBox();
+        jComboBoxSubject.setEditable(false); //надо ли?
+
+        jPanel.add(jLabelNumber);
+        jPanel.add(jTextFieldNumber);
+        jPanel.add(jLabelDate);
+        jPanel.add(picker);
+        jPanel.add(jLabelDateCriminal);
+        jPanel.add(pickerCriminal);
+        jPanel.add(jLabelSotrudnik);
+        jPanel.add(jComboBox);
+        jPanel1.add(jLabelSubject);
+        jPanel1.add(jComboBoxSubject);
+        jPanel1.add(jLabelRayon);
+        jPanel1.add(jTextFieldRayon);
+        jPanel1.add(jLabelHasPunkt);
+        jPanel1.add(jTextFieldNasPunkt);
+        jPanel2.add(jLabelStreet);
+        jPanel2.add(jTextFieldStreet);
+        jPanel2.add(jLabelHouse);
+        jPanel2.add(jTextFieldHouse);
+        jPanel3.add(jLabelBreach);
+        jPanel3.add(jTextFieldBreach);
+        jPanel4.add(jLabelItem_Nomer);
+        jPanel4.add(jTextFieldItem_Nomer);
+        jPanel4.add(jLabelItem_Part);
+        jPanel4.add(jTextFieldItem_Part);
+        jPanel4.add(jCheckBoxCourt);
+        jPanel5.add(jLabelDocuments);
+        jPanel5.add(jTextFieldDocuments);
+        jPanel6.add(jCheckBoxCopy_Date);
+        jPanel6.add(pickerCopy_Date);
+        jPanel6.add(jCheckBoxMail_Date);
+        jPanel6.add(pickerMail_Date);
+        jPanel7.add(jLabelNotice);
+        jPanel7.add(jTextFieldNotice);
+        this.add(jPanel);
+        this.add(jPanel1);
+        this.add(jPanel2);
+        this.add(jPanel3);
+        this.add(jPanel4);
+        this.add(jPanel5);
+        this.add(jPanel6);
+        this.add(jPanel7);
+        this.setVisible(true);
+    }
+}
