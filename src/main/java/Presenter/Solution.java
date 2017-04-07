@@ -348,13 +348,13 @@ public class Solution  {
             protokol_view.pickerCopy_Date.setEditable(true);
         }
         if (protokol.getMail_Date().contains("1899")){
-            System.out.println(protokol.getMail_Date());
+//            System.out.println(protokol.getMail_Date());
             protokol_view.jCheckBoxMail_Date.setSelected(false);
             protokol_view.jCheckBoxMail_Date.setEnabled(false);
             protokol_view.pickerMail_Date.setEditable(false);
         }
         else {
-            System.out.println(protokol.getMail_Date());
+//            System.out.println(protokol.getMail_Date());
             protokol_view.jCheckBoxMail_Date.setSelected(true);
             protokol_view.jCheckBoxMail_Date.setEnabled(true);
             protokol_view.pickerMail_Date.setEditable(true);
