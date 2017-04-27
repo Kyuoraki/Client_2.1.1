@@ -33,7 +33,7 @@ public class Protocol
     @Override
     public String toString() { return nomer + " " + sotrudnik_Key + " " + street; }
 
-    public static List<Protocol> filter(List<Protocol> allP rotocols, Protocol filter,
+    public static List<Protocol> filter(List<Protocol> allProtocols, Protocol filter,
                                         List<Function<Protocol, String>> comparingFields)
     {
         return allProtocols.stream()
