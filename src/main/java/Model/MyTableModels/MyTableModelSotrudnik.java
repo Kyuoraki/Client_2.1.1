@@ -13,9 +13,9 @@ import java.util.Set;
  */
 public class MyTableModelSotrudnik implements TableModel {
 
-    private Set<TableModelListener> listeners = new HashSet<TableModelListener>();
+    public Set<TableModelListener> listeners = new HashSet<TableModelListener>();
 
-    private List<Sotrudnik> beans;
+    public List<Sotrudnik> beans;
 
     public MyTableModelSotrudnik(List<Sotrudnik> beans) {
         this.beans = beans;

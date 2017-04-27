@@ -174,7 +174,11 @@ public class DataBaseDAO {
         ResultSet rs = stat.getResultSet();
         try {
             System.out.println("Subject");
-            rs = stat.executeQuery("SELECT t1.\"Key\", t1.\"Human\", t1.\"Predpr\", t1.\"F\", t1.\"I\", t1.\"O\", t1.\"Name\", t1.\"Dolgnost\", t2.\"Name\" as \"Rayon_Key_1\", t1.\"City_1\", t1.\"Street_1\", t1.\"House_1\", t1.\"Kv_1\", t1.\"Phone_1\", \"Rayon_1\".\"Name\" as \"Rayon_Key_2\", t1.\"City_2\", t1.\"Street_2\", t1.\"House_2\", t1.\"Kv_2\", t1.\"Phone_2\", t1.\"Notice\"" +
+            rs = stat.executeQuery("SELECT t1.\"Key\", t1.\"Human\", t1.\"Predpr\", t1.\"F\", t1.\"I\"," +
+                    " t1.\"O\", t1.\"Name\", t1.\"Dolgnost\", t2.\"Name\" as \"Rayon_Key_1\", t1.\"City_1\"," +
+                    " t1.\"Street_1\", t1.\"House_1\", t1.\"Kv_1\", t1.\"Phone_1\"," +
+                    " \"Rayon_1\".\"Name\" as \"Rayon_Key_2\"," +
+                    " t1.\"City_2\", t1.\"Street_2\", t1.\"House_2\", t1.\"Kv_2\", t1.\"Phone_2\", t1.\"Notice\"" +
                     "FROM (public.\"Subject\" t1 INNER JOIN public.\"Rayon\" t2 ON t1.\"Rayon_Key_1\" = t2.\"Key\") " +
                     "INNER JOIN public.\"Rayon\" AS \"Rayon_1\" ON t1.\"Rayon_Key_2\" = \"Rayon_1\".\"Key\";");
         } catch (SQLException e) {e.printStackTrace();}

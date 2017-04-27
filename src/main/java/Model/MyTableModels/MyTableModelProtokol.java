@@ -13,14 +13,13 @@ import java.util.Set;
  */
 public class MyTableModelProtokol implements TableModel {
 
-    private Set<TableModelListener> listeners = new HashSet<TableModelListener>();
+    public Set<TableModelListener> listeners = new HashSet<TableModelListener>();
 
     public List<Protokol> beans;
 
     public MyTableModelProtokol(List<Protokol> beans) {
         this.beans = beans;
     }
-
 
     public void addTableModelListener(TableModelListener listener) {
         listeners.add(listener);
@@ -77,7 +76,6 @@ public class MyTableModelProtokol implements TableModel {
     public int getRowCount() {
         return beans.size();
     }
-
 
     public Object getValueAt(int rowIndex, int columnIndex) {
         Protokol bean = beans.get(rowIndex);

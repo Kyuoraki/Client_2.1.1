@@ -29,6 +29,12 @@ public class Main_View {
     public JTable tableProtokol;
     public JTable tablePostanovlenie;
     public JTable tableSotrudniki;
+    public JTable tableOplata;
+    public JTable tableJudge;
+    public JTable tableKBK;
+    public JTable tableSubject;
+    public JTable tableCourt;
+    public JTable table;
     public JMenuBar menuBar;
     public JMenu fileMenu;
     public JMenu editMenu;
@@ -70,6 +76,7 @@ public class Main_View {
         tableProtokol =new JTable();
         tablePostanovlenie =new JTable();
         tableSotrudniki =new JTable();
+        tableOplata =new JTable();
         obschayapanel =new JPanel();
         panelknopokup =new JPanel();
         panelknopokdown =new JPanel();

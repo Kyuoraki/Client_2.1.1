@@ -7,6 +7,7 @@ import Model.MyTableModels.*;
 import Views.Main_View;
 import Views.Protokol_Filter_View;
 import Views.Protokol_View;
+import Views.Sotrudnik_View;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -34,10 +35,12 @@ public class Solution  {
     JDesktopPane desktopPane;
     ListSelectionModel lsm;
     Protokol_View protokol_view;
+    Sotrudnik_View sotrudnik_view;
     Protokol_Filter_View protokolFilterView;
 //    ArrayList<Protokol> protokols;
     DataBaseDAO dataBaseHelper;
     MyTableModelProtokol myTableModelProtokol;
+    MyTableModelSotrudnik myTableModelSotrudnik;
 
 
     public Solution() throws IOException, SQLException, ClassNotFoundException {
@@ -45,6 +48,7 @@ public class Solution  {
         desktopPane = new JDesktopPane();
         protokol_view = new Protokol_View();
         protokolFilterView = new Protokol_Filter_View();
+        sotrudnik_view = new Sotrudnik_View();
         dataBaseHelper= DataBaseDAO.getInstance();
         myTableModelProtokol = new MyTableModelProtokol(dataBaseHelper.getProtokols());
         view.Protokols.addActionListener(new ActionListener() {
@@ -100,27 +104,27 @@ public class Solution  {
         protokolFilterView.jButtonInstall.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    List<Protokol> filterProtokols = new ArrayList<Protokol>();
+                    List<Protokol> filterProtokols = new ArrayList<>();
                     List<Protokol> protokols = dataBaseHelper.getProtokols();
                     String x = protokolFilterView.jTextFieldNomer.getText();
                     String y = protokolFilterView.jTextFieldSotrudnik.getText();
-                    if (x.equals("")){
-                        for (int i=0;i<protokols.size();i++){
-                                if (protokols.get(i).getSotrudnik_Key().contains(y)){
-                                    filterProtokols.add(protokols.get(i));
-//                                    System.out.println(protokols.get(i).getStreet());
-                                }
-
-                        }
-                    }
                     for (int i=0;i<protokols.size();i++){
                         if (protokols.get(i).getNomer().contains(x)){
                             if (protokols.get(i).getSotrudnik_Key().contains(y)){
                                 filterProtokols.add(protokols.get(i));
-//                                System.out.println(protokols.get(i).getStreet());
+                                System.out.println(filterProtokols.add(protokols.get(i)));
                             }
                         }
                     }
+                    if (x.equals("")){
+                        for (int i=0;i<protokols.size();i++){
+                                if (protokols.get(i).getSotrudnik_Key().contains(y)){
+                                    filterProtokols.add(protokols.get(i));
+                                }
+
+                        }
+                    }
+
                     myTableModelProtokol.beans = filterProtokols;
                     view.tableProtokol.revalidate();
                     view.tableProtokol.repaint();
@@ -158,7 +162,6 @@ public class Solution  {
 
 
     }
-
     public void goKBK () {
         try {
             view.tableProtokol.setModel(new MyTableModelKBK(dataBaseHelper.getKBK()));
@@ -169,20 +172,24 @@ public class Solution  {
     public void goSotrudnik () {
         view.tabbedPane=new JTabbedPane();
         JScrollPane scrollPane = new JScrollPane(view.tableSotrudniki);
-//        view.tableSotrudniki.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//        lsm=view.tableSotrudniki.getSelectionModel();
-//        view.tableSotrudniki.addMouseListener(new NoDoubleClickListener());
+        view.tableSotrudniki.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lsm=view.tableSotrudniki.getSelectionModel();
+        view.tableSotrudniki.addMouseListener(new NoDoubleClickListener());
         view.obschayapanel.add(desktopPane, BorderLayout.CENTER);
         frame4 = new JInternalFrame("Сотрудники", true, true, true, true);
         frame4.add(view.tabbedPane);
         view.tabbedPane.addTab("Общий список сотрудников", scrollPane);
-//        view.tabbedPane.addTab("Подробно о сотруднике", protokol_view);
+        view.tabbedPane.addTab("Подробнее о сотруднике", sotrudnik_view);
         view.tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         desktopPane.add(frame4);
         desktopPane.setBackground(white);
         frame4.setLocation(80, 100);
         frame4.setSize(200, 600);
         frame4.setVisible(true);
+        String x= null;
+        if(x==null && true){
+            System.out.println("kurlik");
+        }
         try {
             frame4.setMaximum(true);
         } catch (PropertyVetoException e) {
@@ -194,6 +201,7 @@ public class Solution  {
             e.printStackTrace();
         }
     }
+
     public void goJudge () {
         try {
             view.tableProtokol.setModel(new MyTableModelJudge(dataBaseHelper.getJudge()));
@@ -385,7 +393,6 @@ public class Solution  {
             protokol_view.jCheckBoxCourt.setSelected(false);
         }
     }
-
     private class NoDoubleClickListener implements MouseListener { //перехватчик нажатия ЛКМ
 
         public void mouseClicked(MouseEvent e) {
