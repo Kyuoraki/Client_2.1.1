@@ -224,23 +224,5 @@ public class Protokol implements Serializable {
     public void setIsPlan(String isPlan) {
         IsPlan = isPlan;
     }
-
-    @Override
-    public String toString() { return Nomer + " " + Sotrudnik_Key + " " + Street; }
-
-    public static List<Protocol> filter(List<Protocol> allProtocols, Protocol filter,
-                                        List<Function<Protocol, String>> comparingFields)
-    {
-        return allProtocols.stream()
-                .filter(protocol -> test(protocol, filter, comparingFields))
-                .collect(Collectors.toList());
-    }
-
-    private static boolean test(Protocol protocol, Protocol filter,
-                                List<Function<Protocol, String>> comparingFields)
-    {
-        return comparingFields.stream()
-                .allMatch(func -> func.apply(protocol).contains(func.apply(filter)));
-    }
 }
 

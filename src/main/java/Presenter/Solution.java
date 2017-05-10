@@ -51,108 +51,56 @@ public class Solution  {
         sotrudnik_view = new Sotrudnik_View();
         dataBaseHelper= DataBaseDAO.getInstance();
         myTableModelProtokol = new MyTableModelProtokol(dataBaseHelper.getProtokols());
-        view.Protokols.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                    goProtokols();
-            }
-        });
-        view.protokoliMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                    goProtokols();
-            }
-        });
-        view.Postanovlenie.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goPostanovlenie();
-            }
-        });
-        view.postanovlenieMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goPostanovlenie();
-            }
-        });
-        view.sotrudnikiMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goSotrudnik();
-            }
-        });
-        view.Oplata.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goOplata();
-            }
-        });
-        view.oplataMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goOplata();
-            }
-        });
-        view.subjectsMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goSubject();
-            }
-        });
-        view.courtMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goCourt();
-            }
-        });
-        view.judgeMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                goJudge();
-            }
-        });
-        protokolFilterView.jButtonInstall.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    List<Protokol> filterProtokols = new ArrayList<>();
-                    List<Protokol> protokols = dataBaseHelper.getProtokols();
-                    String x = protokolFilterView.jTextFieldNomer.getText();
-                    String y = protokolFilterView.jTextFieldSotrudnik.getText();
+        view.Protokols.addActionListener((e -> goProtokols()));
+        view.protokoliMenuItem.addActionListener(e -> goProtokols());
+        view.Postanovlenie.addActionListener(e -> goPostanovlenie());
+        view.postanovlenieMenuItem.addActionListener(e -> goPostanovlenie());
+        view.sotrudnikiMenuItem.addActionListener(e -> goSotrudnik());
+        view.Oplata.addActionListener(e -> goOplata());
+        view.oplataMenuItem.addActionListener(e -> goOplata());
+        view.subjectsMenuItem.addActionListener(e -> goSubject());
+        view.courtMenuItem.addActionListener(e -> goCourt());
+        view.judgeMenuItem.addActionListener(e -> goJudge());
+        protokolFilterView.jButtonInstall.addActionListener(e -> {
+            try {
+                List<Protokol> filterProtokols = new ArrayList<>();
+                List<Protokol> protokols = dataBaseHelper.getProtokols();
+                String x = protokolFilterView.jTextFieldNomer.getText();
+                String y = protokolFilterView.jTextFieldSotrudnik.getText();
+                for (int i=0;i<protokols.size();i++){
+                    if (protokols.get(i).getNomer().contains(x)){
+                        if (protokols.get(i).getSotrudnik_Key().contains(y)){
+                            filterProtokols.add(protokols.get(i));
+                            System.out.println(filterProtokols.add(protokols.get(i)));
+                        }
+                    }
+                }
+                if (x.equals("")){
                     for (int i=0;i<protokols.size();i++){
-                        if (protokols.get(i).getNomer().contains(x)){
                             if (protokols.get(i).getSotrudnik_Key().contains(y)){
                                 filterProtokols.add(protokols.get(i));
-                                System.out.println(filterProtokols.add(protokols.get(i)));
                             }
-                        }
-                    }
-                    if (x.equals("")){
-                        for (int i=0;i<protokols.size();i++){
-                                if (protokols.get(i).getSotrudnik_Key().contains(y)){
-                                    filterProtokols.add(protokols.get(i));
-                                }
 
-                        }
                     }
+                }
 
-                    myTableModelProtokol.beans = filterProtokols;
-                    view.tableProtokol.revalidate();
-                    view.tableProtokol.repaint();
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
+                myTableModelProtokol.beans = filterProtokols;
+                view.tableProtokol.revalidate();
+                view.tableProtokol.repaint();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
         });
-        view.Close.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (frame2.isSelected()){
-                    frame2.doDefaultCloseAction();
-                }
-                else if (frame3.isSelected()){
-                    frame3.doDefaultCloseAction();
-                }
+        view.Close.addActionListener(e -> {
+            if (frame2.isSelected()){
+                frame2.doDefaultCloseAction();
+            }
+            else if (frame3.isSelected()){
+                frame3.doDefaultCloseAction();
             }
         });
-        view.Exit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-        view.ExitMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit( 0);
-            }
-        });
+        view.Exit.addActionListener(e -> System.exit(0));
+        view.ExitMenuItem.addActionListener(e -> System.exit( 0));
         view.windowframe.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
@@ -183,8 +131,8 @@ public class Solution  {
         view.tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         desktopPane.add(frame4);
         desktopPane.setBackground(white);
-        frame4.setLocation(80, 100);
-        frame4.setSize(200, 600);
+//        frame4.setLocation(80, 100);
+        frame4.setSize(800, 600);
         frame4.setVisible(true);
         String x= null;
         if(x==null && true){
@@ -224,8 +172,8 @@ public class Solution  {
         view.tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         desktopPane.add(frame2);
         desktopPane.setBackground(white);
-        frame2.setLocation(80, 100);
-        frame2.setSize(200, 600);
+//        frame2.setLocation(80, 100);
+        frame2.setSize(800, 600);
         frame2.setVisible(true);
         try {
             frame2.setMaximum(true);
